@@ -1,0 +1,20 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{allbase.name}}{% endblock %}
+
+
+
+{% block content %}
+    <div class="features">
+        <h1>{{ allbase.name }}</h1>
+        <p1>Регіон: {{allbase.city_region}}</p1>
+        <p1>Дата народження: {{allbase.birthday}}</p1>
+        <p1>Розряд: {{allbase.rang}}</p1>
+        <p1>Вікова категорія: {{allbase.agegroup}}</p1>
+        <p1>Розділ: {{allbase.part}}</p1>
+        <p1>Вагова категорія: {{allbase.weightcat}}</p1>
+        <p1>Тренер: {{allbase.trener}}</p1>
+        <a href='{% url  'allbaseupdate' allbase.id %}' class="btn btn-secondary"> Редагувати</a>
+        <a href='{% url  'allbasedelete' allbase.id %}' class="btn btn-dark">Видалити</a>
+    </div>
+{% endblock %}

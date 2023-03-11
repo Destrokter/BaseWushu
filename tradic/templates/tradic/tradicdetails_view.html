@@ -1,0 +1,22 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{tradic.name}}{% endblock %}
+
+
+
+{% block content %}
+    <div class="features">
+        <h1>{{ tradic.name }}</h1>
+        <p1>Назва заходу: {{tradic.measure}}</p1>
+        <p1>Регіон: {{tradic.city_region}}</p1>
+        <p1>Дата народження: {{tradic.birthday}}</p1>
+        <p1>Розряд: {{tradic.rang}}</p1>
+        <p1>Вікова категорія: {{tradic.agegroup}}</p1>
+        <p1>Кулак: {{tradic.catquan}}</p1>
+        <p1>Зброя: {{tradic.catqise}}</p1>
+        <p1>Дуйлянь: {{tradic.duilian}}</p1>
+        <p1>Тренер: {{tradic.trener}}</p1>
+        <a href='{% url  'tradicupdate' tradic.id %}' class="btn btn-secondary"> Редагувати</a>
+        <a href='{% url  'tradicdelete' tradic.id %}' class="btn btn-dark">Видалити</a>
+    </div>
+{% endblock %}

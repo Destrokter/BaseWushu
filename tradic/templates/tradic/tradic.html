@@ -1,0 +1,62 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Заявки традиційні комплекси{% endblock %}
+
+
+
+{% block content %}
+    <div class="features">
+        <h1>Заявки традиційні комплекси</h1>
+         <a href="{% url  'tradiccreate' %}" class="btn btn-secondary"> Заповнити заявку</a>
+       <!--<button class="btn btn-warning">До заявок таолу</button>
+        <button class="btn btn-warning">До заявок саньда</button>-->
+        {% if tradic%}
+            {% for sp in tradic %}
+                <div class="alert alert-secondary">
+                    <h3>{{ sp.name}}</h3>
+                    <p>{{ sp.city_region}}</p>
+                    <p>{{ sp.representative}}</p>
+                    {% if request.user == sp.representative %}
+                    <a href='{% url 'tradicdetail' sp.id %}' class='btn btn-secondary'>Докладніше</a>
+                    {% else %}
+                    Не має доступу
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p6>Записів не існує</p6>
+        {% endif %}
+        {% if page_obj.has_other_pages %}
+        <nav class="list-pages">
+            <ul>
+        {% if page_obj.has_pervious %}
+        <li class="page-num">
+            <a href="?page={{page_obj.previous_page_number}}">&lt;</a>
+        </li>
+        {% endif %}
+                {% for p in paginator.page_range %}
+                {% if page_obj.number == p %}
+                <li class="page-num page-num-selected">{{ p }}</li>
+                {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                <li class="page-num">
+                    <a href="?page={{ p}}">{{ p }}</a>
+                </li>
+                {%  endif %}
+                {% endfor %}
+        {% if page_obj.has_next %}
+        <li class="page-num">
+            <a href="?page={{page_obj.next_page_number}}">&gt;</a>
+        </li>
+        {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+
+      <div class=container>
+        <form action="{% url 'search_results_tradic' %}" method="get">
+            <input name="q" type="text" placeholder="ВВедіть прізвище та ім'я...">
+            <button class="btn btn-light" type="submit">Пошук</button>
+        </form>
+      </div>
+    </div>
+{% endblock %}

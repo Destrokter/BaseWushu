@@ -1,0 +1,21 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{sanda.name}}{% endblock %}
+
+
+
+{% block content %}
+    <div class="features">
+        <h1>{{ sanda.name }}</h1>
+        <p1>Назва заходу: {{sanda.measure}}</p1>
+        <p1>Регіон: {{sanda.city_region}}</p1>
+        <p1>Дата народження: {{sanda.birthday}}</p1>
+        <p1>Розряд: {{sanda.rang}}</p1>
+        <p1>Вікова категорія: {{sanda.agegroup}}</p1>
+        <p1>Розділ: {{sanda.part}}</p1>
+        <p1>Вагова категорія: {{sanda.weightcat}}</p1>
+        <p1>Тренер: {{sanda.trener}}</p1>
+        <a href='{% url  'sandaupdate' sanda.id %}' class="btn btn-secondary"> Редагувати</a>
+        <a href='{% url  'sandadelete' sanda.id %}' class="btn btn-dark">Видалити</a>
+    </div>
+{% endblock %}

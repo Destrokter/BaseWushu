@@ -1,0 +1,11 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}База спортсменів{% endblock %}
+<h1>База спортсменів</h1>
+<ul>
+  {% for sp in object_list %}
+    <li>
+      {{ sp.name }}
+    </li>
+  {% endfor %}
+</ul>

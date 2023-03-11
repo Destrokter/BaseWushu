@@ -1,0 +1,16 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Видалення спортсмена{% endblock %}
+
+
+
+{% block content %}
+    <div class="features">
+        <h1>Видалення спортсмена</h1>
+        <form  method="post">
+                {% csrf_token %}
+
+                <button class="btn btn-dark" type="submit">Видалити</button>
+        </form>
+    </div>
+{% endblock %}

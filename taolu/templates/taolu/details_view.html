@@ -1,0 +1,23 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{taolu.name}}{% endblock %}
+
+
+
+{% block content %}
+    <div class="features">
+        <h1>{{ taolu.name }}</h1>
+        <p1>Назва заходу: {{taolu.measure}}</p1>
+        <p1>Регіон: {{taolu.city_region}}</p1>
+        <p1>Дата народження: {{taolu.birthday}}</p1>
+        <p1>Розряд: {{taolu.rang}}</p1>
+        <p1>Вікова категорія: {{taolu.agegroup}}</p1>
+        <p1>Кулак: {{taolu.catquan}}</p1>
+        <p1>Коротка зброя: {{taolu.catduanqise}}</p1>
+        <p1>Довга зброя: {{taolu.catchanqise}}</p1>
+        <p1>Дуйлянь: {{taolu.duilian}}</p1>
+        <p1>Тренер: {{taolu.trener}}</p1>
+        <a href='{% url  'taoluupdate' taolu.id %}' class="btn btn-secondary"> Редагувати</a>
+        <a href='{% url  'taoludelete' taolu.id %}' class="btn btn-dark">Видалити</a>
+    </div>
+{% endblock %}
